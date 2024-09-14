@@ -1,4 +1,5 @@
 import requests
+import time
 
 from smart_airdrop_claimer import base
 from core.headers import headers
@@ -144,6 +145,8 @@ def do_task(token, task_id, task_name, task_status, keyword_file, proxies=None):
         base.log(f"{base.white}{task_name}: {base.red}Unknown Status - {task_status}")
 
 
+import time  # Make sure time is imported
+
 def process_do_task(token, keyword_file, proxies=None):
     try:
         earn_section = get_task(token=token, proxies=proxies)
@@ -171,6 +174,10 @@ def process_do_task(token, keyword_file, proxies=None):
                                 keyword_file=keyword_file,
                                 proxies=proxies,
                             )
+                            # Add a 5-second delay between sub-tasks
+                            base.log(f"{base.yellow}Waiting 5 seconds before the next task...")
+                            time.sleep(5)
+
                         task_id = task["id"]
                         task_name = task["title"]
                         task_status = task["status"]
@@ -182,6 +189,9 @@ def process_do_task(token, keyword_file, proxies=None):
                             keyword_file=keyword_file,
                             proxies=proxies,
                         )
+                        # Add a 5-second delay between tasks
+                        base.log(f"{base.yellow}Waiting 5 seconds before the next task...")
+                        time.sleep(5)
                     else:
                         task_id = task["id"]
                         task_name = task["title"]
@@ -194,6 +204,10 @@ def process_do_task(token, keyword_file, proxies=None):
                             keyword_file=keyword_file,
                             proxies=proxies,
                         )
+                        # Add a 5-second delay between tasks
+                        base.log(f"{base.yellow}Waiting 5 seconds before the next task...")
+                        time.sleep(5)
+
     except Exception as e:
         base.log(f"{base.white}Auto Do Task: {base.red}Error - {e}")
 
