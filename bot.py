@@ -111,7 +111,7 @@ class Blum:
                     time.sleep(1)
 
             print()
-            wait_time = 12 * 60 * 60
+            wait_time = 5 * 60 * 60
             base.log(f"{base.yellow}Wait for {int(wait_time/60)} minutes!")
             time.sleep(wait_time)
 
