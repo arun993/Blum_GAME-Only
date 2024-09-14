@@ -106,6 +106,10 @@ class Blum:
                 except Exception as e:
                     base.log(f"{base.red}Error: {base.white}{e}")
 
+                for i in range(10, 0, -1):
+                    base.log(f"{base.yellow}Waiting {i} seconds before processing next account...")
+                    time.sleep(1)
+
             print()
             wait_time = 3 * 60 * 60
             base.log(f"{base.yellow}Wait for {int(wait_time/60)} minutes!")
